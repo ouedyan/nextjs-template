@@ -213,7 +213,7 @@ Add `next-sitemap` dependency for sitemap generation
 yarn add -D next-sitemap
 ```
 
-Add a **next-sitemap.js** file like this and configure it as your needs
+Add a **next-sitemap.config.js** file like this and configure it as your needs.
 
 ```json lines
 module.exports = {
@@ -240,7 +240,7 @@ Then add next-sitemap as your post-build script
 {
   "scripts": {
     //...
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap --config next-sitemap.config.js"
   }
 }
 ```
