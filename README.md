@@ -245,6 +245,22 @@ Then add next-sitemap as your post-build script
 }
 ```
 
+Add absolute imports config in **tsconfig.json**
+
+```json lines
+{
+  "compilerOptions": {
+    //...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  //...
+}
+```
+
 ## Scripts
 
 Run the development server
