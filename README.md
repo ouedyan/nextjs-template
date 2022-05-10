@@ -136,7 +136,8 @@ yarn add -D @svgr/webpack
 Configure SVGR in **next.config.js**
 
 ```js
-module.exports = {
+const nextConfig = {
+  //..
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
