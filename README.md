@@ -192,7 +192,7 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 Add `standard-version` dependency to manage versioning and generate changelogs on release
 
 ```bash
-npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+yarn add -D standard-version
 ```
 
 Then add a release script for when we want to deploy a new release.
