@@ -2,10 +2,6 @@
   "name": "nextjs-react-web-app-template",
   "version": "0.1.1",
   "private": true,
-  "engines": {
-    "yarn": ">=1.22.0",
-    "npm": "please-use-yarn"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
