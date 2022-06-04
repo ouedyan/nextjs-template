@@ -1,4 +1,4 @@
-# Next js react Web App Template (Typescript, Sass, Tailwind Css, SVGR, Prettier , SEO and On-Demand ISR pre-configs and other generally used features and tools in production.)
+# Next js React Web Project Template (Typescript, Sass, Tailwind Css, SVGR, Prettier , SEO and On-Demand ISR pre-configs and other generally used features and tools in production.)
 
 This is a React [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). To the default setup have been added:
 
@@ -20,25 +20,6 @@ Initialize Next js with Typescript default scaffold
 
 ```bash
 npx create-next-app --typescript .
-```
-
-Yarn has been enforced in the project instead of npm:
-
-**.npmrc**
-
-```
-engine-strict=true
-```
-
-**package.json**
-
-```json lines
-{
-  "engines": {
-    "yarn": ">=1.22.0",
-    "npm": "please-use-yarn"
-  }
-}
 ```
 
 Install and config Sass, Tailwind Css and Prettier
