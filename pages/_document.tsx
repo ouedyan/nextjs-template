@@ -36,7 +36,7 @@ export default function Document() {
         />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <body className="font-poppins">
+      <body>
         <Main />
         <NextScript />
       </body>
