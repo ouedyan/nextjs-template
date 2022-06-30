@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { twMerge } from "tailwind-merge";
 
-const NextImage = ({ className, style, ...rest }: ImageProps) => {
+const NextImage = ({
+  className,
+  nextImageClassName,
+  style,
+  ...rest
+}: ImageProps & { nextImageClassName?: string }) => {
   //TODO Wait for the error event not being sent to be fixed https://github.com/facebook/react/issues/15446
   const [loaded, setLoaded] = useState(false);
 
@@ -23,7 +28,7 @@ const NextImage = ({ className, style, ...rest }: ImageProps) => {
       >
         <Image
           key={JSON.stringify(rest.src)}
-          className="h-full w-full"
+          className={twMerge("h-full w-full", nextImageClassName)}
           layout="fill"
           objectFit="cover"
           onLoadingComplete={() => setLoaded(true)}
