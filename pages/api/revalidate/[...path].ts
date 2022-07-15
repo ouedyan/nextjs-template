@@ -11,7 +11,7 @@ export default async function handler(
   const pagePath = "/" + (req.query.path as string[]).join("/");
   try {
     //Use "/home" for root path instead of "/" ("/" may appear as an empty path)
-    await res.unstable_revalidate(pagePath == "/home" ? "/" : pagePath);
+    await res.revalidate(pagePath == "/home" ? "/" : pagePath);
     return res.json({ revalidated: true, path: pagePath });
   } catch (err) {
     // If there was an error, Next.js will continue
