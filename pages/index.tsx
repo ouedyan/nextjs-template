@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Card from "@/components/Card";
 import VercelSVG from "@/public/vercel.svg";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -18,9 +19,11 @@ const Home: NextPage = () => {
 
         <p className="my-16 text-center text-[1.5rem] leading-[1.5]">
           Get started by editing{" "}
-          <code className="rounded-[5px] bg-[#fafafa] p-3 font-[Menlo,_Monaco,_'Lucida_Console','Liberation_Mono',_'DejaVu_Sans_Mono',_'Bitstream_Vera_Sans_Mono',_'Courier_New',_monospace] text-[1.1rem]">
-            pages/index.tsx
-          </code>
+          <Link href="/#target">
+            <code className="rounded-[5px] bg-[#fafafa] p-3 font-[Menlo,_Monaco,_'Lucida_Console','Liberation_Mono',_'DejaVu_Sans_Mono',_'Bitstream_Vera_Sans_Mono',_'Courier_New',_monospace] text-[1.1rem]">
+              pages/index.tsx
+            </code>
+          </Link>
         </p>
 
         <div className="flex w-full max-w-[800px] flex-col flex-wrap items-center justify-center sm:w-auto sm:flex-row">
@@ -55,7 +58,7 @@ const Home: NextPage = () => {
           rel="noopener noreferrer"
         >
           Powered by{" "}
-          <span className="ml-2 h-4">
+          <span id="target" className="ml-2 h-4">
             <VercelSVG width={72} height={16} />
           </span>
         </a>
