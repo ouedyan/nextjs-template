@@ -1,4 +1,4 @@
-import Image, { ImageProps } from "next/image";
+import Image, { ImageProps } from "next/future/image";
 import React, { useState } from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { twMerge } from "tailwind-merge";
@@ -6,18 +6,22 @@ import { twMerge } from "tailwind-merge";
 const NextImage = ({
   className,
   nextImageClassName,
+  src,
+  errorSrc,
   style,
   ...rest
-}: ImageProps & { nextImageClassName?: string }) => {
-  //TODO Wait for the error event not being sent to be fixed https://github.com/facebook/react/issues/15446
+}: ImageProps & {
+  nextImageClassName?: string;
+  errorSrc?: ImageProps["src"];
+}) => {
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
     <div
       className={twMerge(
-        `relative overflow-hidden ${
-          loaded ? "" : "bg-gradient-to-br from-gray-50 to-gray-200"
-        }`,
+        "relative overflow-hidden",
+        !loaded && "bg-gradient-to-br from-gray-50 to-gray-200",
         className
       )}
       style={style}
@@ -27,11 +31,18 @@ const NextImage = ({
         ignore={(e) => true}
       >
         <Image
-          key={JSON.stringify(rest.src)}
-          className={twMerge("h-full w-full", nextImageClassName)}
-          layout="fill"
-          objectFit="cover"
-          onLoadingComplete={() => setLoaded(true)}
+          key={JSON.stringify(src)}
+          className={twMerge("h-full w-full object-cover", nextImageClassName)}
+          fill={true}
+          onLoadingComplete={() => {
+            setLoaded(true);
+            setError(false);
+          }}
+          onError={(e) => {
+            setError(true);
+            setLoaded(false);
+          }}
+          src={error && errorSrc ? errorSrc : src}
           {...rest}
         />
       </ErrorBoundary>

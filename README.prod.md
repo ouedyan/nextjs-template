@@ -23,17 +23,6 @@ Run in production mode
 yarn start
 ```
 
-Generate your changelog for the first release. This will tag a release without bumping the version
-
-```bash
-yarn run release --first-release
-```
-
-Generate typical changelog and bump version
-
-```bash
-yarn run release
-```
 
 ## Project directory structure
 

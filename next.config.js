@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
+  // TODO Configure external images' sources
+  images: {
+    remotePatterns: [
+      {
+        hostname: "*",
+      },
+    ],
+  },
   experimental: {
     newNextLinkBehavior: true,
   },

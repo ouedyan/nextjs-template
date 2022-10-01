@@ -1,20 +1,35 @@
 # Next js React Web Project Template (Typescript, Sass, Tailwind Css, SVGR, Prettier , SEO and On-Demand ISR pre-configs and other generally used features and tools in production.)
 
-This is a React [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). To the default setup have been added:
+This is a React [Next.js](https://nextjs.org/) project bootstrapped
+with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). To the default setup
+have been added:
 
 - [Sass](https://sass-lang.com/guide) - Popular Css extension.
 - [Tailwind Css](https://tailwindcss.com/) - Utility-first CSS framework.
 - [SVGR](https://react-svgr.com/) - Tool box for using SVGs in React directly as components like in Create React App.
 - [Prettier](https://prettier.io/) - Popular opinionated code formatter.
 - [SEO configs](https://developers.google.com/search/)
-  - [Sitemap](https://developers.google.com/search/docs/advanced/sitemaps/overview) - Automatic sitemap generation.
-- [Next js On-Demand ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta) - Next js On-demand Incremental Static Regeneration api config to revalidate static stale pages on demand.
-- [Conventional Commits Linting](https://www.conventionalcommits.org/en/v1.0.0/#summary) - Set of rules for enforcing creation of more human and machine-readable explicit commits.
-- [Semantic versioning and changelog generation](https://github.com/conventional-changelog/standard-version) - Automatic semantic versioning and changelog generation.
+    - [Sitemap](https://developers.google.com/search/docs/advanced/sitemaps/overview) - Automatic sitemap generation.
+- [Next js On-Demand ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)
+    - Next js On-demand Incremental Static Regeneration api config to revalidate static stale pages on demand.
+- [Conventional Commits Linting](https://www.conventionalcommits.org/en/v1.0.0/#summary) - Set of rules for enforcing
+  creation of more human and machine-readable explicit commits.
+
+## Quick Start
+
+Start using this template with [Create Next App](https://nextjs.org/docs/api-reference/create-next-app).
+
+```bash
+yarn create next-app -e https://github.com/ouedyan/nextjs-template
+```
+
+Then check all TODO sections (by doing a global search for e.g.) to complete the project's setup.
+You can delete this README and use the simplified README.prod instead in your project.
 
 ## Project Config roadmap (Just Informative. Don't repeat these steps.)
 
-All the necessary config and dependencies have already been set and ready for use but there is an explanation of each step if you want to know more about the pre-config or customize it.
+All the necessary config and dependencies have already been set and ready for use but there is an explanation of each
+step if you want to know more about the pre-config or customize it.
 
 Initialize Next js with Typescript default scaffold
 
@@ -49,7 +64,8 @@ Add prettier-plugin-tailwindcss dependency to automatically sort tailwind classe
 yarn add -D prettier-plugin-tailwindcss
 ```
 
-Add tailwind-merge dependency: utility function to efficiently merge Tailwind CSS classes in JS without style conflicts (Example: in custom components).
+Add tailwind-merge dependency: utility function to efficiently merge Tailwind CSS classes in JS without style
+conflicts (Example: in custom components).
 
 ```bash
 yarn add tailwind-merge
@@ -67,7 +83,11 @@ Add prettier to **.eslintrc.json** extensions.
 
 ```json lines
 {
-  "extends": ["next/core-web-vitals", /*...,*/ "prettier"]
+  "extends": [
+    "next/core-web-vitals",
+    /*...,*/
+    "prettier"
+  ]
   //...
 }
 ```
@@ -86,13 +106,15 @@ Base your **.prettierignore** on **.gitignore** and **.eslintignore** (if you ha
 cat .gitignore >> .prettierignore
 ```
 
-This will automatically install husky and lint-staged, then add a configuration to the project’s **package.json** that will automatically format supported files in a pre-commit hook.
+This will automatically install husky and lint-staged, then add a configuration to the project’s **package.json** that
+will automatically format supported files in a pre-commit hook.
 
 ```bash
 npx mrm@2 lint-staged
 ```
 
-Configure the generated lint-stage section in **package.json** to include more extensions supported by your projects if necessary.
+Configure the generated lint-stage section in **package.json** to include more extensions supported by your projects if
+necessary.
 
 ```json lines
 {
@@ -146,7 +168,8 @@ Add a hook to husky to run `yarn` every time we pull remote changes (in case of 
 npx husky add .husky/post-merge 'yarn'
 ```
 
-Add `@commitlint/config-conventional` to check if commit messages follow the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) rules on commit
+Add `@commitlint/config-conventional` to check if commit messages follow
+the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary) rules on commit
 
 ```bash
 yarn add -D @commitlint/config-conventional @commitlint/cli
@@ -156,7 +179,9 @@ Add a **commitlint.config.js** file like this and configure the rules as you wan
 
 ```json lines
 module.exports = {
-  extends: ["@commitlint/config-conventional"],
+  extends: [
+    "@commitlint/config-conventional"
+  ],
   rules: {
     // 'scope-enum': [2, 'always', ['yourscope', 'yourscope']],
     // 'type-enum': [2,' always', ['build', ...] ],
@@ -170,24 +195,6 @@ Then add the commit message check to Husky
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 ```
 
-Add `standard-version` dependency to manage versioning and generate changelogs on release
-
-```bash
-yarn add -D standard-version
-```
-
-Then add a release script for when we want to deploy a new release.
-
-**package.json**
-
-```json lines
-{
-  "scripts": {
-    //...
-    "release": "standard-version"
-  }
-}
-```
 
 Add `next-sitemap` dependency for sitemap generation
 
@@ -200,7 +207,8 @@ Add a **next-sitemap.config.js** file like this and configure it as your needs.
 ```json lines
 module.exports = {
   siteUrl: "https://example.com",
-  generateRobotsTxt: true, // (optional)
+  generateRobotsTxt: true,
+  // (optional)
   robotsTxtOptions: {
     policies: [
       {
@@ -235,10 +243,16 @@ Add absolute imports config in **tsconfig.json**
     //...
     "baseUrl": ".",
     "paths": {
-      "@/*": ["*"]
+      "@/*": [
+        "*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
   //...
 }
 ```
