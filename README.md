@@ -1,4 +1,4 @@
-# Next js React Web Project Template (Typescript, Sass, Tailwind Css, SVGR, Prettier , SEO and On-Demand ISR pre-configs and other generally used features and tools in production.)
+# Next js React Web Project Template (Typescript, Sass, Tailwind Css, SVGR, Prettier, Storybook, SEO, On-Demand ISR pre-configs and other generally used features and tools in production.)
 
 This is a React [Next.js](https://nextjs.org/) project bootstrapped
 with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). To the default setup
@@ -10,6 +10,7 @@ have been added:
   Added to utilities such as :
     - [tailwind-merge](https://www.npmjs.com/package/tailwind-merge) Utility function to efficiently merge Tailwind CSS classes in JS without style conflicts.
     - [prettier-plugin-tailwindcss](https://www.npmjs.com/package/prettier-plugin-tailwindcss) A Prettier plugin that automatically sorts Tailwind classes based on recommended class order.
+- [Storybook](https://storybook.js.org/) - Frontend workshop for previewing and testing your UI components and pages in isolation.
 - [SVGR](https://react-svgr.com/) - Tool box for using SVGs in React directly as components like in Create React App.
 - Easy [SEO management](https://developers.google.com/search/) with [next-seo](https://www.npmjs.com/package/next-seo)
     - Automatic [Sitemap](https://developers.google.com/search/docs/advanced/sitemaps/overview) generation with [next-sitemap](https://www.npmjs.com/package/next-sitemap).
@@ -74,6 +75,18 @@ Run in production mode
 yarn start
 ```
 
+Run Storybook server
+
+```bash
+yarn storybook
+```
+
+Build Storybook as a static web application
+
+```bash
+yarn build-storybook
+```
+
 
 ## Project directory structure
 
@@ -81,9 +94,9 @@ Main folder structure
 
 ```
 📂 components
-  ...📄 {component}.tsx
+  ...📄 {Component}.tsx
   ...📂 {page}
-     ...📄 {component}.tsx
+     ...📄 {Component}.tsx
 
 📂 lib
   📂 data
@@ -103,12 +116,17 @@ Main folder structure
   📂 images
   📄 favicon.ico
   📄 robots.txt
+  
+📂 stories
+  ...📄 {Component}.stories.tsx
+  ...📂 {page}
+     ...📄 {Component}.stories.tsx
 
 📂 styles
   📄 globals.scss
 ```
 
-## Project tech stack useful resources
+## Project's main tech stack useful resources
 
 ### React
 

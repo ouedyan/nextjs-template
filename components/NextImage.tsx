@@ -1,4 +1,4 @@
-import Image, { ImageProps } from "next/future/image";
+import Image, { ImageProps } from "next/image";
 import React, { useState } from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { twMerge } from "tailwind-merge";
