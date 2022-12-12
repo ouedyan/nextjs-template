@@ -1,6 +1,6 @@
 # {Example} React Next Js web app
 
-For more info about the project initial configuration roadmap, features and tools see https://github.com/ouedyan/nextjs-template.
+For more info about the project initial configuration, features and tools head to https://github.com/ouedyan/nextjs-template.
 
 
 ## Scripts
@@ -21,6 +21,18 @@ Run in production mode
 
 ```bash
 yarn start
+```
+
+Run Storybook server
+
+```bash
+yarn storybook
+```
+
+Build Storybook as a static web application
+
+```bash
+yarn build-storybook
 ```
 
 
