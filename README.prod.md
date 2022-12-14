@@ -42,9 +42,9 @@ Main folder structure
 
 ```
 📂 components
-  ...📄 {component}.tsx
+  ...📄 {Component}.tsx
   ...📂 {page}
-     ...📄 {component}.tsx
+     ...📄 {Component}.tsx
 
 📂 lib
   📂 data
@@ -64,12 +64,18 @@ Main folder structure
   📂 images
   📄 favicon.ico
   📄 robots.txt
+  
+📂 stories
+  ...📄 {Component}.stories.tsx
+  ...📂 {page}
+     ...📄 {Component}.stories.tsx
 
 📂 styles
   📄 globals.scss
 ```
 
-## Project tech stack useful resources
+
+## Project's main tech stack useful resources
 
 ### React
 
