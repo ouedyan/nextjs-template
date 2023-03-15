@@ -6,6 +6,7 @@ import { twMerge } from "tailwind-merge";
 const NextImage = ({
   className,
   nextImageClassName,
+  alt,
   src,
   errorSrc,
   style,
@@ -28,17 +29,47 @@ const NextImage = ({
     >
       <ErrorBoundary
         // ignore={(e) => e.message.startsWith("Failed to parse src")}
-        ignore={(e) => true}
+        // ignore={(e) => {
+        //   return true;
+        // }}
+        fallbackComponent={(error) =>
+          // Catches errors when component itself crashes
+          errorSrc ? (
+            <Image
+              key={JSON.stringify(src)}
+              className={twMerge(
+                "h-full w-full object-cover",
+                nextImageClassName
+              )}
+              fill={true}
+              alt={alt}
+              onError={(e) => {
+                console.log(
+                  `Error on image with src: ${src}\nError src: ${errorSrc}\nError: ${e}`
+                );
+              }}
+              src={errorSrc}
+              {...rest}
+            />
+          ) : (
+            <div className="h-full w-full" />
+          )
+        }
       >
         <Image
           key={JSON.stringify(src)}
           className={twMerge("h-full w-full object-cover", nextImageClassName)}
           fill={true}
+          alt={alt}
           onLoadingComplete={() => {
             setLoaded(true);
             setError(false);
           }}
           onError={(e) => {
+            // Catches image loading errors
+            // console.log(
+            //   `Error on image with src: ${src}\nError src: ${errorSrc}\nError: ${e}`
+            // );
             setError(true);
             setLoaded(false);
           }}

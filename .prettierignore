@@ -45,3 +45,7 @@ sitemap-*.xml
 
 # Idea
 /.idea
+
+# Vscode
+/.vscode
+
