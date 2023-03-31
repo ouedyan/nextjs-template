@@ -114,7 +114,12 @@ Main folder structure
 📂 public
   📂 icons
   📂 images
-  📄 favicon.ico
+  📂 favicons
+    📄 favicon.ico
+    ...📄 favicon-{size}x{size}.png
+    📄 browserconfig.xml
+    📄 site.webmanifest
+    ...📄 {other-pwa-assets}
   📄 robots.txt
   
 📂 stories
