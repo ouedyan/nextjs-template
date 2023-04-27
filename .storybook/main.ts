@@ -13,6 +13,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  staticDirs: ["../public"],
   webpackFinal: (config) => {
     // https://react-svgr.com/docs/next/
 
