@@ -41,7 +41,6 @@ sitemap-*.xml
 
 # Yarn
 /.yarn/
-/.yarnrc.yml
 
 # Idea
 /.idea
