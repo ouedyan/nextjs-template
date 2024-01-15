@@ -1,0 +1,33 @@
+{
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "json5"
+  ],
+  "i18n-ally.localesPaths": "i18n/locales",
+  "i18n-ally.enabledFrameworks": [
+    "next-international"
+  ],
+  "i18n-ally.namespace": true,
+  "i18n-ally.enabledParsers": [
+    "ts"
+  ],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sortKeys": true,
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]",
+      "[`'\"`]([^'\"`,;]*)[`'\"`]"
+    ],
+    [
+      "(?:clsx|cn)\\(([^]*)\\)",
+      "(?:'|\"|`)([^\"'`]*)(?:'|\"|`)"
+    ],
+    [
+      "cva\\(([^)]*)\\)",
+      "[\"'`]([^\"'`]*).*?[\"'`]"
+    ]
+  ]
+}

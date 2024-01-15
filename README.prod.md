@@ -1,7 +1,6 @@
-# {Example} React Next Js web app
+# {Example} React Next.js web app
 
 For more info about the project initial configuration, features and tools head to https://github.com/ouedyan/nextjs-template.
-
 
 ## Scripts
 
@@ -35,13 +34,14 @@ Build Storybook as a static web application
 yarn build-storybook
 ```
 
-
 ## Project directory structure
 
 Main folder structure
 
 ```
 📂 components
+  📂 hooks
+  utils.ts
   ...📄 {Component}.tsx
   ...📂 {page}
      ...📄 {Component}.tsx
@@ -51,34 +51,47 @@ Main folder structure
     ...📄 {service}.ts
   📂 types
     ...📄 {type}.ts
+  📂 utils
+    ...📄 {context}.ts
 
-📂 pages
-  📂 api
-    ...📄 {apiPath}.ts
-  _app.tsx ?
-  _document.tsx ?
+📂 app
+  📂 test
+    📂 api
+      ...📄 {apiPath}.ts
   ...📄 {path}.ts
+  layout.tsx
+  page.client.tsx
+  page.tsx
+  not-found.tsx
+  error.tsx
+  global-error.tsx
+  favicon.ico
+  ...📄 favicon-{size}x{size}.png
+  📄 browserconfig.xml
+  📄 site.webmanifest
+  ...📄 {other-pwa-assets}
+  📄 robots.txt
 
 📂 public
+  📂 favicons
   📂 icons
   📂 images
-  📂 favicons
-    📄 favicon.ico
-    ...📄 favicon-{size}x{size}.png
-    📄 browserconfig.xml
-    📄 site.webmanifest
-    ...📄 {other-pwa-assets}
-  📄 robots.txt
-  
+
 📂 stories
+  📂 examples
   ...📄 {Component}.stories.tsx
   ...📂 {page}
      ...📄 {Component}.stories.tsx
 
 📂 styles
   📄 globals.scss
-```
 
+📂 i18n
+  📂 locales
+    ...📂 {locale}
+      📄 common.ts
+      ...📄 {namespace}.ts
+```
 
 ## Project's main tech stack useful resources
 

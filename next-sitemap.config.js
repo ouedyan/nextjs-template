@@ -3,8 +3,8 @@
  * @see https://github.com/iamvishnusankar/next-sitemap#readme
  */
 module.exports = {
-  // TODO Change siteUrl
-  siteUrl: "https://example.com",
+  // TODO Update siteUrl
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://example.com",
   generateRobotsTxt: true, // (optional)
   robotsTxtOptions: {
     policies: [
