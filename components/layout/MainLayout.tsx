@@ -5,9 +5,9 @@ const MainLayout = async ({
   className,
   children,
   ...rest
-}: ComponentPropsWithoutRef<"div">) => {
+}: ComponentPropsWithoutRef<"main">) => {
   return (
-    <div
+    <main
       className={twMerge(
         "min-h-screen bg-white text-black dark:bg-black dark:text-white",
         className,
@@ -15,7 +15,7 @@ const MainLayout = async ({
       {...rest}
     >
       {children}
-    </div>
+    </main>
   );
 };
 

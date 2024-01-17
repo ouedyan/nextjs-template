@@ -1,6 +1,8 @@
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
 module.exports = (phase, { defaultConfig }) => {
+  const isDevelopment = phase === PHASE_DEVELOPMENT_SERVER;
+
   /** @type {import('next').NextConfig} */
   const nextConfig = {
     images: {
@@ -25,7 +27,7 @@ module.exports = (phase, { defaultConfig }) => {
           },
         ],
 
-        ...(phase === PHASE_DEVELOPMENT_SERVER
+        ...(isDevelopment
           ? [
               // https://jotai.org/docs/tools/swc#swc-jotai-debug-label
               ["@swc-jotai/debug-label", {}],
@@ -38,6 +40,19 @@ module.exports = (phase, { defaultConfig }) => {
     // Jotai Devtools: required for UI css to be transpiled correctly 👇
     // https://nextjs.org/docs/advanced-features/compiler#module-transpilation
     transpilePackages: ["jotai-devtools"],
+    ...(isDevelopment
+      ? {
+          logging: {
+            fetches: {
+              fullUrl: true,
+            },
+          },
+          // Update devIndicator's position hidden by other devtools
+          devIndicators: {
+            buildActivityPosition: "top-right",
+          },
+        }
+      : {}),
     webpack(config) {
       // https://react-svgr.com/docs/next/
 

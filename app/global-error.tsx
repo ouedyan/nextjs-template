@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function GlobalError({
   error,
@@ -18,7 +21,7 @@ export default function GlobalError({
 
   return (
     <html>
-      <body>
+      <body className={inter.className}>
         <h2>Something went wrong!</h2>
         <button onClick={() => reset()}>Try again</button>
       </body>

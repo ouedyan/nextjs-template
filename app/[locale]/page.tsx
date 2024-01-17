@@ -31,9 +31,11 @@ export default async function Home({
   const t = await getI18n();
 
   return (
-    <main
+    <div
       className={clsx(
         "flex min-h-screen flex-col items-center justify-between p-24",
+        "[background:linear-gradient(to_bottom,transparent,white)_rgb(214,219,220)]",
+        "dark:[background:linear-gradient(to_bottom,transparent,black)_black]",
       )}
     >
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -76,14 +78,14 @@ export default async function Home({
 
       <div
         className={clsx(
-          "relative z-[-1] flex place-items-center",
+          "relative flex place-items-center",
           [
-            "before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:content-[''] before:lg:h-[360px]",
+            "before:absolute before:z-10 before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:content-[''] before:lg:h-[360px]",
             "before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl",
             "before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10",
           ],
           [
-            "after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:content-['']",
+            "after:absolute after:z-0 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:content-['']",
             "after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl",
             "after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40",
           ],
@@ -92,7 +94,7 @@ export default async function Home({
         <NextImage
           src="/icons/next.svg"
           alt="Next.js Logo"
-          className="relative h-[37px] w-[180px] dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          className="relative z-20 h-[37px] w-[180px] dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
           nextImageClassName="object-contain"
           priority
         />
@@ -123,6 +125,6 @@ export default async function Home({
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
         />
       </div>
-    </main>
+    </div>
   );
 }

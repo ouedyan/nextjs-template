@@ -16,7 +16,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["public/locales/**/*.json"],
+      files: ["i18n/locales/**/*.json"],
       rules: {
         "jsonc/sort-keys": [1],
       },

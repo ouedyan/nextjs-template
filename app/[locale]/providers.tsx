@@ -1,22 +1,15 @@
 "use client";
 
-import React, { ReactNode, useRef } from "react";
+import React, { ComponentPropsWithoutRef, ReactNode, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "jotai";
 import atomStore from "@/lib/data/atomStore";
 import { DevTools } from "jotai-devtools";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
+import { ToastContainer } from "react-toastify";
 
-const Providers = ({
-  children,
-  // langResources,
-  // locale,
-}: {
-  children?: ReactNode;
-  // langResources: Resource;
-  // locale: string;
-}) => {
+const Providers = ({ children }: { children?: ReactNode }) => {
   // This ensures that data is not shared between different users and requests,
   // while still only creating the QueryClient once per component lifecycle.
   const queryClientRef = useRef(
@@ -37,6 +30,7 @@ const Providers = ({
       <Provider store={atomStore}>
         <QueryClientProvider client={queryClientRef.current}>
           {children}
+          <ThemedToastContainer />
           <ReactQueryDevtools buttonPosition="bottom-right" />
           <DevTools store={atomStore} />
         </QueryClientProvider>
@@ -46,3 +40,10 @@ const Providers = ({
 };
 
 export default Providers;
+
+const ThemedToastContainer = (
+  props: ComponentPropsWithoutRef<typeof ToastContainer>,
+) => {
+  const { resolvedTheme } = useTheme();
+  return <ToastContainer theme={resolvedTheme} {...props} />;
+};

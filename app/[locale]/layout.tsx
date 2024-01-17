@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import "@/styles/globals.scss";
 import Providers from "@/app/[locale]/providers";
 import MainLayout from "@/components/layout/MainLayout";
 import { ReactNode } from "react";
 import { I18nProviderClient } from "@/i18n/client";
 import Locale from "intl-locale-textinfo-polyfill";
 import { getStaticParams } from "@/i18n/server";
-import clsx from "clsx";
+import i18nConfig from "@/i18n.config";
+import { notFound } from "next/navigation";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -82,17 +83,15 @@ export default async function RootLayout({
   children: ReactNode;
   params: { locale: string };
 }) {
+  // Redirect not found paths not handled by i18n middleware (eg: non-existent.file. See matcher) and matching dynamic /[locale] to not-found
+  // @ts-ignore
+  if (!i18nConfig.locales.includes(locale)) return notFound();
+
   const { direction: dir } = new Locale(locale).textInfo;
 
   return (
     <html lang={locale} dir={dir} className="scroll-smooth">
-      <body
-        className={clsx(
-          inter.className,
-          "[background:linear-gradient(to_bottom,transparent,white)_rgb(214,219,220)]",
-          "dark:[background:linear-gradient(to_bottom,transparent,black)_black]",
-        )}
-      >
+      <body className={inter.className}>
         <Providers>
           <I18nProviderClient locale={locale}>
             <MainLayout>{children}</MainLayout>
