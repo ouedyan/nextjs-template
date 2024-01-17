@@ -5,6 +5,7 @@ import { Heading, HeadingLevel } from "@ariakit/react";
 import { Metadata, ResolvingMetadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import ThemeToggle from "@/components/common/ThemeToggle";
+import { generatePageMetadata } from "@/components/utils";
 
 export async function generateMetadata(
   { params: { locale } }: { params: { locale: string } },
@@ -12,13 +13,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const t = await getI18n();
 
-  return {
-    title: t("auth.login"),
-    // @ts-ignore
-    openGraph: { ...(await parent).openGraph, title: t("auth.login") },
-    // @ts-ignore
-    twitter: { ...(await parent).twitter, title: t("auth.login") },
-  };
+  return await generatePageMetadata({ title: t("auth.login") }, parent);
 }
 
 export default async function Login({

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getI18n } from "@/i18n/server";
 import { Metadata, ResolvingMetadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
+import { generatePageMetadata } from "@/components/utils";
 
 export async function generateMetadata(
   { params: { locale } }: { params: { locale: string } },
@@ -12,13 +13,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const t = await getI18n();
 
-  return {
-    title: t("home.homepage"),
-    // @ts-ignore
-    openGraph: { ...(await parent).openGraph, title: t("home.homepage") },
-    // @ts-ignore
-    twitter: { ...(await parent).twitter, title: t("home.homepage") },
-  };
+  return await generatePageMetadata({ title: t("home.homepage") }, parent);
 }
 
 export default async function Home({
