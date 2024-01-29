@@ -10,6 +10,7 @@ export default function LocalizedError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  // Throw error as overlay instead in dev
   if (process.env.NODE_ENV === "development") throw error;
 
   const t = useI18n();

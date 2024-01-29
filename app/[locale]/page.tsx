@@ -6,6 +6,9 @@ import { getI18n } from "@/i18n/server";
 import { Metadata, ResolvingMetadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import { generatePageMetadata } from "@/components/utils";
+import VercelSvg from "@/public/icons/vercel.svg";
+// @ts-ignore
+import nextJsSvg from "@/public/icons/next.svg?url";
 
 export async function generateMetadata(
   { params: { locale } }: { params: { locale: string } },
@@ -59,14 +62,7 @@ export default async function Home({
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
-            <NextImage
-              src="/icons/vercel.svg"
-              alt="Vercel Logo"
-              className="h-[24px] w-[100px] dark:invert"
-              nextImageClassName="object-contain"
-              priority
-            />
+            By <VercelSvg className="h-[24px] w-[100px] dark:invert" />
           </a>
         </div>
       </div>
@@ -87,7 +83,7 @@ export default async function Home({
         )}
       >
         <NextImage
-          src="/icons/next.svg"
+          src={nextJsSvg}
           alt="Next.js Logo"
           className="relative z-20 h-[37px] w-[180px] dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
           nextImageClassName="object-contain"

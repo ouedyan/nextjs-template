@@ -5,13 +5,14 @@ import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import ControlledErrorBoundary from "@/components/ControlledErrorBoundary";
 import defaultLoader from "next/dist/shared/lib/image-loader";
-import nextConfig from "../next.config";
-import { imageConfigDefault } from "next/dist/shared/lib/image-config";
+import {
+  ImageConfig,
+  imageConfigDefault,
+} from "next/dist/shared/lib/image-config";
 import {
   StaticImport,
   StaticRequire,
 } from "next/dist/shared/lib/get-img-props";
-import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 
 const NextImage = ({
   className,
@@ -26,21 +27,11 @@ const NextImage = ({
   errorAltSources?: ImageProps["src"][];
 }) => {
   // Make image loader's remote url parsing server dev errors non-blocking
-  // See https://github.com/vercel/next.js/blob/156f7860e2fa69e7f20aaf45c7cc1d542c5a50b6/packages/next/src/shared/lib/image-loader.ts
-  // See https://github.com/vercel/next.js/blob/156f7860e2fa69e7f20aaf45c7cc1d542c5a50b6/packages/next/src/shared/lib/image-config.ts#L103
   let serverDevError: Error | null = null;
   if (process.env.NODE_ENV !== "production") {
     if (!isStaticImport(src)) {
       try {
-        defaultLoader({
-          src,
-          config: {
-            ...imageConfigDefault,
-            ...nextConfig(PHASE_DEVELOPMENT_SERVER, { defaultConfig: {} })
-              .images,
-          },
-          width: 400,
-        });
+        checkRemoteImageForServerErrors(src);
       } catch (err) {
         console.log("Server Image Dev Error: ", err);
         serverDevError = err as Error;
@@ -149,4 +140,27 @@ function isStaticImport(src: string | StaticImport): src is StaticImport {
     (isStaticRequire(src as StaticImport) ||
       isStaticImageData(src as StaticImport))
   );
+}
+
+function checkRemoteImageForServerErrors(src: string) {
+  const nextImageConfig: ImageConfig = {
+    remotePatterns: [
+      {
+        hostname: "*",
+      },
+    ],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  };
+  // See https://github.com/vercel/next.js/blob/3734ae889047c1dd9efafd75435408fd2a291833/packages/next/src/shared/lib/image-loader.ts
+  // See https://github.com/vercel/next.js/blob/3734ae889047c1dd9efafd75435408fd2a291833/packages/next/src/shared/lib/image-config.ts#L103
+  defaultLoader({
+    src,
+    config: {
+      ...imageConfigDefault,
+      ...nextImageConfig,
+    },
+    width: 400,
+  });
 }

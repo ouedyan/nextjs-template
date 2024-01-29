@@ -12,7 +12,7 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  if (process.env.NODE_ENV === "development") throw error;
+  // Note: Triggered only in Prod by default, so throws error as overlay in dev by default
 
   useEffect(() => {
     // Log the error. Eg: error reporting service/ analytics ...

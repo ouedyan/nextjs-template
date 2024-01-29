@@ -12,6 +12,7 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  // Throw error as overlay instead in dev
   if (process.env.NODE_ENV === "development") throw error;
 
   useEffect(() => {

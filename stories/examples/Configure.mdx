@@ -1,10 +1,10 @@
 import { Meta } from "@storybook/blocks";
 import Image from "next/image";
 
-import Github from "./assets/github.svg";
-import Discord from "./assets/discord.svg";
-import Youtube from "./assets/youtube.svg";
-import Tutorials from "./assets/tutorials.svg";
+import github from "./assets/github.svg?url";
+import discord from "./assets/discord.svg?url";
+import YoutubeSvg from "./assets/youtube.svg";
+import TutorialsSvg from "./assets/tutorials.svg";
 import Styling from "./assets/styling.png";
 import Context from "./assets/context.png";
 import Assets from "./assets/assets.png";
@@ -16,11 +16,11 @@ import Accessibility from "./assets/accessibility.png";
 import Theming from "./assets/theming.png";
 import AddonLibrary from "./assets/addon-library.png";
 
-export const RightArrow = () => <svg 
-    viewBox="0 0 14 14" 
-    width="8px" 
-    height="14px" 
-    style={{ 
+export const RightArrow = () => <svg
+    viewBox="0 0 14 14"
+    width="8px"
+    height="14px"
+    style={{
       marginLeft: '4px',
       display: 'inline-block',
       shapeRendering: 'inherit',
@@ -57,7 +57,7 @@ export const RightArrow = () => <svg
       >Learn more<RightArrow /></a>
     </div>
     <div className="sb-section-item">
-      <Image 
+      <Image
         width={0}
         height={0}
         style={{ width: '100%', height: 'auto' }}
@@ -72,12 +72,12 @@ export const RightArrow = () => <svg
       >Learn more<RightArrow /></a>
     </div>
     <div className="sb-section-item">
-      <Image 
+      <Image
         width={0}
         height={0}
-        style={{ width: '100%', height: 'auto' }} 
-        src={Assets} 
-        alt="A representation of typography and image assets" 
+        style={{ width: '100%', height: 'auto' }}
+        src={Assets}
+        alt="A representation of typography and image assets"
       />
       <div>
         <h4 className="sb-section-item-heading">Load assets and resources</h4>
@@ -102,12 +102,12 @@ export const RightArrow = () => <svg
   <div className="sb-section">
     <div className="sb-features-grid">
       <div className="sb-grid-item">
-        <Image 
+        <Image
           width={0}
           height={0}
-          style={{ width: '100%', height: 'auto' }} 
-          src={Docs} 
-          alt="A screenshot showing the autodocs tag being set, pointing a docs page being generated" 
+          style={{ width: '100%', height: 'auto' }}
+          src={Docs}
+          alt="A screenshot showing the autodocs tag being set, pointing a docs page being generated"
         />
         <h4 className="sb-section-item-heading">Autodocs</h4>
         <p className="sb-section-item-paragraph">Auto-generate living,
@@ -118,12 +118,12 @@ export const RightArrow = () => <svg
         >Learn more<RightArrow /></a>
       </div>
       <div className="sb-grid-item">
-        <Image 
+        <Image
           width={0}
           height={0}
-          style={{ width: '100%', height: 'auto' }} 
-          src={Share} 
-          alt="A browser window showing a Storybook being published to a chromatic.com URL" 
+          style={{ width: '100%', height: 'auto' }}
+          src={Share}
+          alt="A browser window showing a Storybook being published to a chromatic.com URL"
         />
         <h4 className="sb-section-item-heading">Publish to Chromatic</h4>
         <p className="sb-section-item-paragraph">Publish your Storybook to review and collaborate with your entire team.</p>
@@ -133,12 +133,12 @@ export const RightArrow = () => <svg
         >Learn more<RightArrow /></a>
       </div>
       <div className="sb-grid-item">
-        <Image 
+        <Image
           width={0}
           height={0}
-          style={{ width: '100%', height: 'auto' }} 
-          src={FigmaPlugin} 
-          alt="Windows showing the Storybook plugin in Figma" 
+          style={{ width: '100%', height: 'auto' }}
+          src={FigmaPlugin}
+          alt="Windows showing the Storybook plugin in Figma"
         />
         <h4 className="sb-section-item-heading">Figma Plugin</h4>
         <p className="sb-section-item-paragraph">Embed your stories into Figma to cross-reference the design and live
@@ -149,12 +149,12 @@ export const RightArrow = () => <svg
         >Learn more<RightArrow /></a>
       </div>
       <div className="sb-grid-item">
-        <Image 
+        <Image
           width={0}
           height={0}
-          style={{ width: '100%', height: 'auto' }} 
-          src={Testing} 
-          alt="Screenshot of tests passing and failing" 
+          style={{ width: '100%', height: 'auto' }}
+          src={Testing}
+          alt="Screenshot of tests passing and failing"
         />
         <h4 className="sb-section-item-heading">Testing</h4>
         <p className="sb-section-item-paragraph">Use stories to test a component in all its variations, no matter how
@@ -165,12 +165,12 @@ export const RightArrow = () => <svg
         >Learn more<RightArrow /></a>
       </div>
       <div className="sb-grid-item">
-        <Image 
+        <Image
           width={0}
           height={0}
-          style={{ width: '100%', height: 'auto' }} 
-          src={Accessibility} 
-          alt="Screenshot of accessibility tests passing and failing" 
+          style={{ width: '100%', height: 'auto' }}
+          src={Accessibility}
+          alt="Screenshot of accessibility tests passing and failing"
         />
         <h4 className="sb-section-item-heading">Accessibility</h4>
         <p className="sb-section-item-paragraph">Automatically test your components for a11y issues as you develop.</p>
@@ -180,12 +180,12 @@ export const RightArrow = () => <svg
         >Learn more<RightArrow /></a>
       </div>
       <div className="sb-grid-item">
-        <Image 
+        <Image
           width={0}
           height={0}
-          style={{ width: '100%', height: 'auto' }} 
-          src={Theming} 
-          alt="Screenshot of Storybook in light and dark mode" 
+          style={{ width: '100%', height: 'auto' }}
+          src={Theming}
+          alt="Screenshot of Storybook in light and dark mode"
         />
         <h4 className="sb-section-item-heading">Theming</h4>
         <p className="sb-section-item-paragraph">Theme Storybook's UI to personalize it to your project.</p>
@@ -207,23 +207,23 @@ export const RightArrow = () => <svg
       >Discover all addons<RightArrow /></a>
   </div>
   <div className='sb-addon-img'>
-    <Image 
+    <Image
       width={650}
       height={347}
-      src={AddonLibrary} 
-      alt="Integrate your tools with Storybook to connect workflows." 
+      src={AddonLibrary}
+      alt="Integrate your tools with Storybook to connect workflows."
     />
   </div>
 </div>
 
 <div className="sb-section sb-socials">
     <div className="sb-section-item">
-      <Image 
+      <Image
         width={32}
         height={32}
         layout="fixed"
-        src={Github} 
-        alt="Github logo" 
+        src={github}
+        alt="Github logo"
         className="sb-explore-image"
       />
       Join our contributors building the future of UI development.
@@ -234,12 +234,12 @@ export const RightArrow = () => <svg
       >Star on GitHub<RightArrow /></a>
     </div>
     <div className="sb-section-item">
-      <Image 
+      <Image
         width={33}
         height={32}
         layout="fixed"
-        src={Discord} 
-        alt="Discord logo" 
+        src={discord}
+        alt="Discord logo"
         className="sb-explore-image"
       />
       <div>
@@ -252,14 +252,7 @@ export const RightArrow = () => <svg
       </div>
     </div>
     <div className="sb-section-item">
-      <Image 
-        width={32}
-        height={32}
-        layout="fixed"
-        src={Youtube} 
-        alt="Youtube logo" 
-        className="sb-explore-image"
-      />
+      <YoutubeSvg className="sb-explore-image w-[32px] h-[32px]" />
       <div>
         Watch tutorials, feature previews and interviews.
 
@@ -270,14 +263,7 @@ export const RightArrow = () => <svg
       </div>
     </div>
     <div className="sb-section-item">
-      <Image 
-        width={33}
-        height={32}
-        layout="fixed"
-        src={Tutorials} 
-        alt="A book" 
-        className="sb-explore-image"
-      />
+      <TutorialsSvg className="sb-explore-image w-[33px] h-[32px]" />
       <p>Follow guided walkthroughs on for key workflows.</p>
 
       <a
