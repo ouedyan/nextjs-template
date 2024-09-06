@@ -1,14 +1,8 @@
-import clsx from "clsx";
-import Card from "@/components/common/Card";
-import NextImage from "@/components/NextImage";
-import Link from "next/link";
 import { getI18n } from "@/i18n/server";
 import { Metadata, ResolvingMetadata } from "next";
 import { setStaticParamsLocale } from "next-international/server";
 import { generatePageMetadata } from "@/components/utils";
-import VercelSvg from "@/public/icons/vercel.svg";
-// @ts-ignore
-import nextJsSvg from "@/public/icons/next.svg?url";
+import Image from "next/image";
 
 export async function generateMetadata(
   { params: { locale } }: { params: { locale: string } },
@@ -29,93 +23,100 @@ export default async function Home({
   const t = await getI18n();
 
   return (
-    <div
-      className={clsx(
-        "flex min-h-screen flex-col items-center justify-between p-24",
-        "[background:linear-gradient(to_bottom,transparent,white)_rgb(214,219,220)]",
-        "dark:[background:linear-gradient(to_bottom,transparent,black)_black]",
-      )}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p
-          className={clsx(
-            "fixed left-0 top-0 flex w-full justify-center pb-6 pt-8",
-            "border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-2xl",
-            "dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit",
-            "lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30",
-          )}
-        >
-          <Link href="/login">Get started by editing&nbsp;</Link>
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div
-          className={clsx(
-            "fixed bottom-0 left-0 flex h-48 w-full items-end justify-center",
-            "bg-gradient-to-t from-white via-white",
-            "dark:from-black dark:via-black",
-            "lg:static lg:h-auto lg:w-auto lg:bg-none",
-          )}
-        >
+    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 bg-background p-8 pb-20 font-[family-name:var(--font-geist-sans)] text-foreground dark:bg-background-dark dark:text-foreground-dark sm:p-20">
+      <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
+        <Image
+          className="dark:invert"
+          src="https://nextjs.org/icons/next.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
+        <ol className="list-inside list-decimal text-center font-[family-name:var(--font-geist-mono)] text-sm sm:text-left">
+          <li className="mb-2">
+            Get started by editing{" "}
+            <code className="rounded bg-black/[.05] px-1 py-0.5 font-semibold dark:bg-white/[.06]">
+              app/page.tsx
+            </code>
+            .
+          </li>
+          <li>Save and see your changes instantly.</li>
+        </ol>
+
+        <div className="flex flex-col items-center gap-4 sm:flex-row">
           <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            className="flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent bg-foreground px-4 text-sm text-background transition-colors hover:bg-[#383838] dark:bg-foreground-dark dark:text-background-dark dark:hover:bg-[#ccc] sm:h-12 sm:px-5 sm:text-base"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
           >
-            By <VercelSvg className="h-[24px] w-[100px] dark:invert" />
+            <Image
+              className="dark:invert"
+              src="https://nextjs.org/icons/vercel.svg"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Deploy now
+          </a>
+          <a
+            className="flex h-10 items-center justify-center rounded-full border border-solid border-black/[.08] px-4 text-sm transition-colors hover:border-transparent hover:bg-[#f2f2f2] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] sm:h-12 sm:min-w-44 sm:px-5 sm:text-base"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read our docs
           </a>
         </div>
-      </div>
-
-      <div
-        className={clsx(
-          "relative flex place-items-center",
-          [
-            "before:absolute before:z-10 before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:content-[''] before:lg:h-[360px]",
-            "before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl",
-            "before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10",
-          ],
-          [
-            "after:absolute after:z-0 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:content-['']",
-            "after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl",
-            "after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40",
-          ],
-        )}
-      >
-        <NextImage
-          src={nextJsSvg}
-          alt="Next.js Logo"
-          className="relative z-20 h-[37px] w-[180px] dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          nextImageClassName="object-contain"
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <Card
-          title="Docs"
-          content="Find in-depth information about Next.js features and API."
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-        />
-
-        <Card
-          title="Learn"
-          content="Learn about Next.js in an interactive course with&nbsp;quizzes!"
+      </main>
+      <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-        />
-
-        <Card
-          title="Templates"
-          content="Explore starter templates for Next.js."
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-        />
-
-        <Card
-          title="Deploy"
-          content="Instantly deploy your Next.js site to a shareable URL with Vercel."
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-        />
-      </div>
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/file.svg"
+            alt="File icon"
+            width={16}
+            height={16}
+          />
+          Learn
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          Examples
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/globe.svg"
+            alt="Globe icon"
+            width={16}
+            height={16}
+          />
+          Go to nextjs.org →
+        </a>
+      </footer>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -10,11 +10,12 @@
     "strictNullChecks": true,
     "strictFunctionTypes": false,
 
+    // Ensure that casing is correct in imports.
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -24,13 +25,16 @@
         "name": "next"
       }
     ],
+    // Note: Storybook requires baseUrl for absolute paths
+    // See https://github.com/storybookjs/storybook/issues/21901#issuecomment-1538802687
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
   },
   "exclude": ["node_modules"],
   "include": [
-    "custom.d.ts",
+    "svgr.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

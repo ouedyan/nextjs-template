@@ -34,9 +34,9 @@ class ErrorBoundary extends Component<Props, State> {
   componentDidUpdate(
     prevProps: Readonly<Props>,
     prevState: Readonly<State>,
-    snapshot?: any
+    snapshot?: unknown,
   ) {
-    if (this.props.error != prevProps.error) {
+    if (this.props.error !== prevProps.error) {
       this.setState({
         error: this.props.error,
       });

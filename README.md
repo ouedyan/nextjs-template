@@ -21,7 +21,7 @@ have been added:
 Start using this template with [Create Next App](https://nextjs.org/docs/api-reference/create-next-app).
 
 ```bash
-yarn create next-app -e https://github.com/ouedyan/nextjs-template
+pnpm dlx create-next-app -e https://github.com/ouedyan/nextjs-template
 ```
 
 Then check all TODO sections (by doing a global search for e.g.) to complete the project's setup.
@@ -32,31 +32,31 @@ You can delete this README and use the simplified README.prod instead in your pr
 Run the development server
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Building for production
 
 ```bash
-yarn build
+pnpm build
 ```
 
 Run in production mode
 
 ```bash
-yarn start
+pnpm start
 ```
 
 Run Storybook server
 
 ```bash
-yarn storybook
+pnpm storybook
 ```
 
 Build Storybook as a static web application
 
 ```bash
-yarn build-storybook
+pnpm build-storybook
 ```
 
 ## Project directory structure

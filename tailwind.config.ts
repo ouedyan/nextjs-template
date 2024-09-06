@@ -9,10 +9,17 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        primary: "",
+        secondary: "",
+        background: {
+          DEFAULT: "#ffffff",
+          dark: "#0a0a0a",
+        },
+        foreground: {
+          DEFAULT: "#171717",
+          dark: "#ededed",
+        },
       },
     },
   },

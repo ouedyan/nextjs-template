@@ -1,14 +1,9 @@
 "use client";
 
-import Image, { ImageProps, StaticImageData } from "next/image";
+import Image, { getImageProps, ImageProps, StaticImageData } from "next/image";
 import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import ControlledErrorBoundary from "@/components/ControlledErrorBoundary";
-import defaultLoader from "next/dist/shared/lib/image-loader";
-import {
-  ImageConfig,
-  imageConfigDefault,
-} from "next/dist/shared/lib/image-config";
 import {
   StaticImport,
   StaticRequire,
@@ -31,7 +26,7 @@ const NextImage = ({
   if (process.env.NODE_ENV !== "production") {
     if (!isStaticImport(src)) {
       try {
-        checkRemoteImageForServerErrors(src);
+        checkRemoteImageForServerErrors({ src, alt, fill: true, ...rest });
       } catch (err) {
         console.log("Server Image Dev Error: ", err);
         serverDevError = err as Error;
@@ -85,9 +80,13 @@ const NextImage = ({
         );
       }}
     >
+      {/* Parent wrapper and automatic fill for remote images (avoiding required width and height props)*/}
+      {/* See https://nextjs.org/docs/app/api-reference/components/image#width */}
+      {/* See https://nextjs.org/docs/app/api-reference/components/image#fill */}
       <div
         className={twMerge(
           "relative overflow-hidden",
+          // Loading background
           !loaded && "bg-gradient-to-br from-gray-50 to-gray-200",
           className,
         )}
@@ -122,6 +121,15 @@ const NextImage = ({
 
 export default NextImage;
 
+// https://github.com/vercel/next.js/blob/v14.1.0/packages/next/src/shared/lib/get-img-props.ts#L109
+function isStaticImport(src: string | StaticImport): src is StaticImport {
+  return (
+    typeof src === "object" &&
+    (isStaticRequire(src as StaticImport) ||
+      isStaticImageData(src as StaticImport))
+  );
+}
+
 function isStaticRequire(
   src: StaticRequire | StaticImageData,
 ): src is StaticRequire {
@@ -134,33 +142,6 @@ function isStaticImageData(
   return (src as StaticImageData).src !== undefined;
 }
 
-function isStaticImport(src: string | StaticImport): src is StaticImport {
-  return (
-    typeof src === "object" &&
-    (isStaticRequire(src as StaticImport) ||
-      isStaticImageData(src as StaticImport))
-  );
-}
-
-function checkRemoteImageForServerErrors(src: string) {
-  const nextImageConfig: ImageConfig = {
-    remotePatterns: [
-      {
-        hostname: "*",
-      },
-    ],
-    dangerouslyAllowSVG: true,
-    contentDispositionType: "attachment",
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  };
-  // See https://github.com/vercel/next.js/blob/3734ae889047c1dd9efafd75435408fd2a291833/packages/next/src/shared/lib/image-loader.ts
-  // See https://github.com/vercel/next.js/blob/3734ae889047c1dd9efafd75435408fd2a291833/packages/next/src/shared/lib/image-config.ts#L103
-  defaultLoader({
-    src,
-    config: {
-      ...imageConfigDefault,
-      ...nextImageConfig,
-    },
-    width: 400,
-  });
+function checkRemoteImageForServerErrors(props: ImageProps) {
+  getImageProps(props);
 }

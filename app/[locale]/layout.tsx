@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import Providers from "@/app/[locale]/providers";
 import MainLayout from "@/components/layout/MainLayout";
 import { ReactNode } from "react";
@@ -9,8 +8,7 @@ import { getStaticParams } from "@/i18n/server";
 import i18nConfig from "@/i18n.config";
 import { notFound } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import localFont from "next/font/local";
 
 const websiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://example.com",
@@ -76,22 +74,35 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
+const geistSans = localFont({
+  src: "../../public/fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+const geistMono = localFont({
+  src: "../../public/fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
+
 export default async function RootLayout({
   children,
   params: { locale },
-}: {
+}: Readonly<{
   children: ReactNode;
   params: { locale: string };
-}) {
+}>) {
   // Redirect not found paths not handled by i18n middleware (eg: non-existent.file. See matcher) and matching dynamic /[locale] to not-found
-  // @ts-ignore
+  // @ts-expect-error - locale is a dynamic string, type unknown at compile time
   if (!i18nConfig.locales.includes(locale)) return notFound();
 
   const { direction: dir } = new Locale(locale).textInfo;
 
   return (
     <html lang={locale} dir={dir} className="scroll-smooth">
-      <body className={inter.className}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Providers>
           <I18nProviderClient locale={locale}>
             <MainLayout>{children}</MainLayout>

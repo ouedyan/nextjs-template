@@ -1,6 +1,7 @@
 module.exports = {
   extends: [
     "next/core-web-vitals",
+    "next/typescript",
     "prettier",
     "plugin:storybook/recommended",
     "plugin:@tanstack/eslint-plugin-query/recommended",
@@ -13,6 +14,9 @@ module.exports = {
     "@tanstack/query/exhaustive-deps": 1,
     "@tanstack/query/stable-query-client": 1,
     "@tanstack/query/no-rest-destructuring": 1,
+    "react/no-unescaped-entities": 1,
+    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/no-var-requires": 1,
   },
   overrides: [
     {

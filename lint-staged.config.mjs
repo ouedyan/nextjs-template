@@ -1,4 +1,4 @@
-const path = require("path");
+import path from "path";
 
 // Use next lint --fix on staged files instead of eslint
 // https://nextjs.org/docs/pages/building-your-application/configuring/eslint#lint-staged
@@ -12,10 +12,10 @@ const buildNextLintCommand = (filenames) =>
     .map((f) => path.relative(process.cwd(), f))
     .join(" --file ")}`;
 
-// Why with yarn prefix ?
+// Why with 'pnpm run' prefix ?
 // https://stackoverflow.com/questions/71412253/unable-to-commit-due-to-husky-failure-in-node-application
-module.exports = {
-  // "**/*.{js,jsx,ts,tsx}": ["yarn eslint --fix", "yarn prettier -w"],
-  "**/*.{js,jsx,ts,tsx}": [buildNextLintCommand, "yarn prettier -w"],
-  "**/*.{json,css,scss,md,webmanifest}": ["yarn prettier -w"],
+export default {
+  // "**/*.{js,jsx,ts,tsx}": ["pnpm eslint --fix", "pnpm prettier -w"],
+  "**/*.{js,jsx,ts,tsx}": [buildNextLintCommand, "pnpm prettier -w"],
+  "**/*.{json,css,scss,md,webmanifest}": ["pnpm prettier -w"],
 };

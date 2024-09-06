@@ -10,15 +10,17 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@chromatic-com/storybook",
   ],
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
   staticDirs: ["../public"],
+  typescript: {
+    // https://storybook.js.org/docs/api/main-config/main-config-typescript#reactdocgen
+    reactDocgen: "react-docgen-typescript",
+  },
   webpackFinal: (config) => {
     config.module = config.module || {};
     config.module.rules = config.module.rules || [];

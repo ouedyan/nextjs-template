@@ -10,3 +10,9 @@ svg {
   flex-shrink: 0;
   -webkit-flex-shrink: 0;
 }
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

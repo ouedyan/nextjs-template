@@ -16,7 +16,7 @@ export async function generateMetadata(
   return await generatePageMetadata({ title: t("auth.login") }, parent);
 }
 
-export default async function Login({
+export default async function Demo({
   params: { locale },
 }: {
   params: { locale: string };
@@ -25,10 +25,12 @@ export default async function Login({
 
   const t = await getI18n();
 
+  // TODO Showcase template technologies and utilities (clsx, custom components...etc)
+
   return (
     <div className="flex flex-col items-center">
       <HeadingLevel>
-        <Heading className="mb-4 text-xl">{t("auth.login")}</Heading>
+        <Heading className="mb-4 text-xl">{t("common.demo")}</Heading>
         <Link href="/" className="underline">
           {t("home.homepage")}
         </Link>

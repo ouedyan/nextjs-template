@@ -1,10 +1,18 @@
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+import { PHASE_DEVELOPMENT_SERVER } from "next/constants.js";
 
-module.exports = (phase, { defaultConfig }) => {
+/**
+ * @param {string} phase
+ * @param {{ defaultConfig: import('next').NextConfig }} context
+ * @returns {import('next').NextConfig}
+ */
+export default (phase, { defaultConfig }) => {
   const isDevelopment = phase === PHASE_DEVELOPMENT_SERVER;
 
   /** @type {import('next').NextConfig} */
   const nextConfig = {
+    // See https://nextjs.org/docs/app/api-reference/next-config-js/output
+    // See https://github.com/vercel/next.js/blob/canary/examples/with-docker/README.md#in-existing-projects
+    output: "standalone",
     images: {
       remotePatterns: [
         {
@@ -16,6 +24,9 @@ module.exports = (phase, { defaultConfig }) => {
       contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
     experimental: {
+      // See https://nextjs.org/docs/app/api-reference/next-config-js/output#experimental-turbotrace
+      // Buggy: not found module errors when enabled
+      // turbotrace: { logDetail: false },
       // typedRoutes: true,
       swcPlugins: [
         // https://tanstack.com/query/latest/docs/react/guides/ssr#serialization

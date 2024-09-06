@@ -1,4 +1,2 @@
-. "$(dirname -- "$0")/common.sh"
-
-npx lint-staged --verbose
-yarn build
+pnpm dlx lint-staged --verbose
+pnpm build

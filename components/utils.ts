@@ -1,7 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Metadata, ResolvingMetadata } from "next";
-import { getPathname } from "next-impl-getters/get-pathname";
+import { getPathname } from "@nimpl/getters/get-pathname";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -20,14 +20,13 @@ export const generatePageMetadata = async (
   return {
     title: meta.title,
     description: meta.description,
-    // @ts-ignore
     openGraph: {
       ...(await parent)?.openGraph,
       title: meta.title,
       description: meta.description,
       url: pathName ?? undefined,
     },
-    // @ts-ignore
+    // @ts-expect-error - Parent type may lack 'twitter' property
     twitter: {
       ...(await parent).twitter,
       title: meta.title,

@@ -7,31 +7,31 @@ For more info about the project initial configuration, features and tools head t
 Run the development server
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Building for production
 
 ```bash
-yarn build
+pnpm build
 ```
 
 Run in production mode
 
 ```bash
-yarn start
+pnpm start
 ```
 
 Run Storybook server
 
 ```bash
-yarn storybook
+pnpm storybook
 ```
 
 Build Storybook as a static web application
 
 ```bash
-yarn build-storybook
+pnpm build-storybook
 ```
 
 ## Project directory structure

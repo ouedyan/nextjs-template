@@ -1,4 +1,8 @@
-module.exports = {
+/**
+ * @see https://prettier.io/docs/en/configuration.html
+ * @type {import("prettier").Config}
+ */
+const config = {
   plugins: [
     "prettier-plugin-tailwindcss",
     // Why another prettier sorter when already sort fixable eslint-plugin-jsonc ?
@@ -9,3 +13,5 @@ module.exports = {
   ],
   tailwindFunctions: ["clsx", "twMerge", "twJoin", "cva", "cn"],
 };
+
+export default config;

@@ -1,0 +1,46 @@
+name: Deploy Web to Production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Copy files via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "."
+          # TODO Set proper Target directory
+          target: "~/project/web"
+          rm: true
+
+      - name: Deploy using SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          command_timeout: 30m
+          # Build and deploy,
+          # Remove unused containers and images,
+          # Remove all build cache except cache mounts.
+          # TODO Set proper Project and Web directories
+          script: |
+            cd ~/project
+            docker compose -f docker-compose.yml up --build --detach --force-recreate --no-deps --remove-orphans web
+            docker system df -v
+            docker container prune -f
+            docker image prune -a -f
+            docker buildx prune -a -f --filter type=regular
+            docker buildx prune -a -f --filter type=source.local
+            docker system df -v
