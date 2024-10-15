@@ -1,14 +1,5 @@
 import React, { forwardRef } from "react";
-import {
-  DefaultError,
-  DefinedInitialDataOptions,
-  DefinedUseQueryResult,
-  QueryClient,
-  QueryKey,
-  UndefinedInitialDataOptions,
-  UseQueryOptions,
-  UseQueryResult,
-} from "@tanstack/react-query";
+import { DefaultError } from "@tanstack/react-query";
 
 //  forwardRef global type augmentation to not lose generic type-safety for generic components
 
@@ -47,45 +38,4 @@ declare module "@tanstack/react-query" {
     queryMeta: QueryMeta;
     mutationMeta: Record<string, unknown>;
   }
-
-  // See @tanstack/react-query/src/useQuery.ts
-
-  function useQuery<
-    TQueryFnData = unknown,
-    TError = DefaultError,
-    TData = TQueryFnData,
-    TQueryKey extends QueryKey = QueryKey,
-  >(
-    options: Omit<
-      UndefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey>,
-      "meta"
-    > & { meta?: QueryMeta<TQueryFnData, TError> },
-    queryClient?: QueryClient,
-  ): UseQueryResult<TData, TError>;
-
-  function useQuery<
-    TQueryFnData = unknown,
-    TError = DefaultError,
-    TData = TQueryFnData,
-    TQueryKey extends QueryKey = QueryKey,
-  >(
-    options: Omit<
-      DefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey>,
-      "meta"
-    > & { meta?: QueryMeta<TQueryFnData, TError> },
-    queryClient?: QueryClient,
-  ): DefinedUseQueryResult<TData, TError>;
-
-  function useQuery<
-    TQueryFnData = unknown,
-    TError = DefaultError,
-    TData = TQueryFnData,
-    TQueryKey extends QueryKey = QueryKey,
-  >(
-    options: Omit<
-      UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
-      "meta"
-    > & { meta?: QueryMeta<TQueryFnData, TError> },
-    queryClient?: QueryClient,
-  ): UseQueryResult<TData, TError>;
 }
