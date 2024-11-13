@@ -1,7 +1,7 @@
 import path from "path";
 
 // Use next lint --fix on staged files instead of eslint
-// https://nextjs.org/docs/pages/building-your-application/configuring/eslint#lint-staged
+// https://nextjs.org/docs/app/api-reference/config/eslint#running-lint-on-staged-files
 
 /**
  * @type {(filenames: string[]) => string | string[] | Promise<string | string[]>}
@@ -9,7 +9,7 @@ import path from "path";
  */
 const buildNextLintCommand = (filenames) =>
   `next lint --fix --file ${filenames
-    .map((f) => path.relative(process.cwd(), f))
+    .map((f) => `'${path.relative(process.cwd(), f)}'`)
     .join(" --file ")}`;
 
 // Why with 'pnpm run' prefix ?

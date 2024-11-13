@@ -21,6 +21,7 @@ export const getLocales = () =>
           ObjectKeys(namespaces).map((ns) => {
             return [
               ns,
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
               require(
                 `./locales/${locale}/${ns}.json`,
               ) as (typeof namespaces)[typeof ns],

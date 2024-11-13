@@ -14,7 +14,7 @@ module.exports = {
     "@tanstack/query/exhaustive-deps": 1,
     "@tanstack/query/stable-query-client": 1,
     "@tanstack/query/no-rest-destructuring": 1,
-    "react/no-unescaped-entities": 1,
+    "react/no-unescaped-entities": 0,
     "@typescript-eslint/no-unused-vars": 1,
     "@typescript-eslint/no-var-requires": 1,
   },
