@@ -1,7 +1,35 @@
 {
   "name": "nextjs-template",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Production-grade Next.js starter template with App Router, TypeScript, Tailwind CSS, and comprehensive tooling for enterprise applications",
   "private": true,
+  "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "app-router",
+    "server-components",
+    "enterprise",
+    "template",
+    "starter",
+    "storybook",
+    "i18n",
+    "seo",
+    "tanstack-query",
+    "jotai",
+    "zod",
+    "docker"
+  ],
+  "author": {
+    "name": "Yan Ouedraogo",
+    "email": "yanouedraogo5@gmail.com",
+    "url": "https://rsm.io/ouedyan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ouedyan/nextjs-template"
+  },
   "engines": {
     "node": ">=18.18 <23"
   },

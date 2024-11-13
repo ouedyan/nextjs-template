@@ -1,6 +1,6 @@
-# {Example} React Next.js web app
+# {Project Name}
 
-For more info about the project initial configuration, features and tools head to https://github.com/ouedyan/nextjs-template.
+A Next.js application built with modern tooling and best practices. For detailed documentation about initial configuration, features and architecture, visit the [template repository](https://github.com/ouedyan/nextjs-template).
 
 ## Scripts
 
@@ -36,12 +36,38 @@ pnpm build-storybook
 
 ## Project directory structure
 
+The template follows a modular architecture with clear separation of concerns:
+
 Main folder structure
 
 ```
+📂 app
+  📂 [locale]
+    ...📂 {path}
+      📄 page.client.tsx
+      📄 page.tsx
+    📄 page.client.tsx
+    📄 page.tsx
+    📄 layout.tsx
+    📄 error.tsx
+
+  📂 api
+    📂 test
+      📄 route.ts
+    ...📂 {other-apis}
+
+  📄 actions.ts
+  📄 layout.tsx
+  📄 not-found.tsx
+  📄 error.tsx
+  📄 global-error.tsx
+  📄 providers.tsx
+
 📂 components
+  📂 common
+  📂 layout
   📂 hooks
-  utils.ts
+  📄 utils.ts
   ...📄 {Component}.tsx
   ...📂 {page}
      ...📄 {Component}.tsx
@@ -53,24 +79,6 @@ Main folder structure
     ...📄 {type}.ts
   📂 utils
     ...📄 {context}.ts
-
-📂 app
-  📂 test
-    📂 api
-      ...📄 {apiPath}.ts
-  ...📄 {path}.ts
-  layout.tsx
-  page.client.tsx
-  page.tsx
-  not-found.tsx
-  error.tsx
-  global-error.tsx
-  favicon.ico
-  ...📄 favicon-{size}x{size}.png
-  📄 browserconfig.xml
-  📄 site.webmanifest
-  ...📄 {other-pwa-assets}
-  📄 robots.txt
 
 📂 public
   📂 favicons
@@ -89,28 +97,28 @@ Main folder structure
 📂 i18n
   📂 locales
     ...📂 {locale}
-      📄 common.ts
-      ...📄 {namespace}.ts
+      📄 common.json
+      ...📄 {namespace}.json
+  📄 client.ts
+  📄 server.ts
+  📄 utils.ts
 ```
 
 ## Project's main tech stack useful resources
 
 ### React
 
+- [React Documentation](https://react.dev) - Official React documentation
 - [W3Schools React tutorial](https://www.w3schools.com/react) - Step-by-step guide to learning React.
-- [React new Docs](https://beta.reactjs.org/learn) - react official documentation (in beta).
-- [React old Docs](https://reactjs.org/docs) - react official documentation (to be replaced).
 
 ### Next.js
 
-- [Learn Next.js](https://nextjs.org/learn) - the best way to start with next.js if you are new.
-- [Next.js Docs](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - Interactive Next.js tutorial, the best way to start with next.js if you are new.
+- [Next.js Documentation](https://nextjs.org/docs) - Features and API reference
 
-### Tailwind Css
+### Tooling
 
-- [Tailwind Docs](https://tailwindcss.com/docs) - Tailwind Css official documentation and reference.
-- [Tailwind with Next.js guide](https://tailwindcss.com/docs/guides/nextjs) - Tailwind installation guide with Next.js.
-
-### Typescript
-
-- [W3Schools Typescript tutorial](https://www.w3schools.com/typescript/) - Step-by-step guide to learning Typescript.
+- [TanStack Query](https://tanstack.com/query/latest) - Data fetching & caching
+- [Jotai Documentation](https://jotai.org) - Atomic state management
+- [Tailwind CSS](https://tailwindcss.com/docs) - Utility-first CSS
+- [TypeScript Handbook](https://www.typescriptlang.org/docs) - TypeScript guide

@@ -1,30 +1,77 @@
-# Next.js React Web Project Template (App directory, Typescript, Sass, Tailwind Css, SVGR, Prettier, Storybook, SEO, RSC helpers and other generally used features and tools in production.)
+# Next.js React Web Project Template
 
-This is a React [Next.js](https://nextjs.org/) project bootstrapped
-with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).To the default setup
-have been added:
+A production-grade Next.js starter template designed for building scalable enterprise applications. Combines modern development practices with battle-tested tooling and utilities.
 
-- [Prettier](https://prettier.io/) - Popular opinionated code formatter.
-- [Sass](https://sass-lang.com/guide) - Popular Css extension.
-- [Tailwind Css](https://tailwindcss.com/) - Utility-first CSS framework.
-  Added to utilities such as :
-  - [tailwind-merge](https://www.npmjs.com/package/tailwind-merge) Utility function to efficiently merge Tailwind CSS classes in JS without style conflicts.
-  - [prettier-plugin-tailwindcss](https://www.npmjs.com/package/prettier-plugin-tailwindcss) A Prettier plugin that automatically sorts Tailwind classes based on recommended class order.
-- [Storybook](https://storybook.js.org/) - Frontend workshop for previewing and testing your UI components and pages in isolation.
-- [SVGR](https://react-svgr.com/) - Tool box for using SVGs in React directly as components like in Create React App.
-- Automatic [Sitemap](https://developers.google.com/search/docs/advanced/sitemaps/overview) generation with [next-sitemap](https://www.npmjs.com/package/next-sitemap).
-- [Conventional Commits Linting](https://www.conventionalcommits.org/en/v1.0.0/#summary) - Set of rules for enforcing
-  the creation of more human and machine-readable explicit commits.
+[![Next.js](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC.svg)](https://tailwindcss.com)
+
+## Why This Template?
+
+- 🏢 **Enterprise-Ready**: Built with scalability and maintainability in mind
+- 🔒 **Type-Safe**: Comprehensive TypeScript setup with strict mode
+- 🚀 **Performance-First**: Optimized for Core Web Vitals
+- 📱 **Full-Stack Features**: From API layer to UI components
+- 🛠️ **Developer Experience**: Extensive tooling and utilities included
+
+## Key Features
+
+### Core Framework
+
+- ⚡️ Next.js 14 with App Router and React Server Components
+- 🎯 TypeScript with strict mode
+- 🎨 TailwindCSS with advanced features:
+  - Automatic class merging with tailwind-merge
+  - Class sorting with prettier-plugin-tailwindcss
+  - Container queries and form plugins
+- 🎭 Dark mode support with next-themes
+
+### State & Data Management
+
+- 📡 TanStack Query v5 with devtools
+- 🔄 Jotai for atomic state management
+- 📝 React Hook Form with validation
+- 🔍 Zod schema validation
+
+### Developer Experience
+
+- 📚 Storybook 8 with Next.js integration
+- 🎯 ESLint & Prettier with custom rules
+- 🔒 Git hooks with Husky
+- 📏 Conventional commits enforcement
+- 🐳 Docker support with standalone output
+
+### Production Features
+
+- 🌍 Advanced i18n with next-international
+- 🔍 SEO optimization with next-seo
+- 🗺️ Automatic sitemap generation
+- 📱 PWA configuration and assets
+- 🖼️ SVGR for SVG as components
+- 🎯 Comprehensive error handling
+- 🚀 Performance optimizations
+
+### Additional Utilities & Helpers
+
+- 🛡️ Flicker-resistant and error-handling Image component
+- 🎯 RSC (React Server Component) utilities and type-safe helpers
+- 📊 SEO utilities for dynamic metadata generation
+- 🔄 Custom hooks for common patterns
+- 🎨 Advanced Tailwind utilities and components
+- 🚀 Performance optimization helpers
+- 📱 Responsive design utilities
+- 🔍 Type-safe API layer setup
+- 🎭 Advanced error boundary configurations
 
 ## Quick Start
 
-Start using this template with [Create Next App](https://nextjs.org/docs/api-reference/create-next-app).
+Start using this template with [Create Next App](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ```bash
 pnpm dlx create-next-app -e https://github.com/ouedyan/nextjs-template
 ```
 
-Then check all TODO sections (by doing a global search for e.g.) to complete the project's setup.
+Then search for "TODO" comments to complete project setup.
 You can delete this README and use the simplified README.prod instead in your project.
 
 ## Scripts
@@ -61,12 +108,38 @@ pnpm build-storybook
 
 ## Project directory structure
 
+The template follows a modular architecture with clear separation of concerns:
+
 Main folder structure
 
 ```
+📂 app
+  📂 [locale]
+    ...📂 {path}
+      📄 page.client.tsx
+      📄 page.tsx
+    📄 page.client.tsx
+    📄 page.tsx
+    📄 layout.tsx
+    📄 error.tsx
+
+  📂 api
+    📂 test
+      📄 route.ts
+    ...📂 {other-apis}
+
+  📄 actions.ts
+  📄 layout.tsx
+  📄 not-found.tsx
+  📄 error.tsx
+  📄 global-error.tsx
+  📄 providers.tsx
+
 📂 components
+  📂 common
+  📂 layout
   📂 hooks
-  utils.ts
+  📄 utils.ts
   ...📄 {Component}.tsx
   ...📂 {page}
      ...📄 {Component}.tsx
@@ -78,24 +151,6 @@ Main folder structure
     ...📄 {type}.ts
   📂 utils
     ...📄 {context}.ts
-
-📂 app
-  📂 test
-    📂 api
-      ...📄 {apiPath}.ts
-  ...📄 {path}.ts
-  layout.tsx
-  page.client.tsx
-  page.tsx
-  not-found.tsx
-  error.tsx
-  global-error.tsx
-  favicon.ico
-  ...📄 favicon-{size}x{size}.png
-  📄 browserconfig.xml
-  📄 site.webmanifest
-  ...📄 {other-pwa-assets}
-  📄 robots.txt
 
 📂 public
   📂 favicons
@@ -114,28 +169,28 @@ Main folder structure
 📂 i18n
   📂 locales
     ...📂 {locale}
-      📄 common.ts
-      ...📄 {namespace}.ts
+      📄 common.json
+      ...📄 {namespace}.json
+  📄 client.ts
+  📄 server.ts
+  📄 utils.ts
 ```
 
 ## Project's main tech stack useful resources
 
 ### React
 
+- [React Documentation](https://react.dev) - Official React documentation
 - [W3Schools React tutorial](https://www.w3schools.com/react) - Step-by-step guide to learning React.
-- [React new Docs](https://beta.reactjs.org/learn) - react official documentation (in beta).
-- [React old Docs](https://reactjs.org/docs) - react official documentation (to be replaced).
 
 ### Next.js
 
-- [Learn Next.js](https://nextjs.org/learn) - the best way to start with next.js if you are new.
-- [Next.js Docs](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - Interactive Next.js tutorial, the best way to start with next.js if you are new.
+- [Next.js Documentation](https://nextjs.org/docs) - Features and API reference
 
-### Tailwind Css
+### Tooling
 
-- [Tailwind Docs](https://tailwindcss.com/docs) - Tailwind Css official documentation and reference.
-- [Tailwind with Next.js guide](https://tailwindcss.com/docs/guides/nextjs) - Tailwind installation guide with Next.js.
-
-### Typescript
-
-- [W3Schools Typescript tutorial](https://www.w3schools.com/typescript/) - Step-by-step guide to learning Typescript.
+- [TanStack Query](https://tanstack.com/query/latest) - Data fetching & caching
+- [Jotai Documentation](https://jotai.org) - Atomic state management
+- [Tailwind CSS](https://tailwindcss.com/docs) - Utility-first CSS
+- [TypeScript Handbook](https://www.typescriptlang.org/docs) - TypeScript guide

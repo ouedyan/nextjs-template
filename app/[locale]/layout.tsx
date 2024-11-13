@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import Providers from "@/app/[locale]/providers";
+import Providers from "@/app/providers";
 import MainLayout from "@/components/layout/MainLayout";
 import { ReactNode } from "react";
 import { I18nProviderClient } from "@/i18n/client";
